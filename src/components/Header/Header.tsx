@@ -1,6 +1,6 @@
 import React from 'react';
 // import {} from 'react-router-dom';
-import './style.css'
+import './style.css';
 import logo from '../../assets/logo/iomechs-logo.png';
 import star from '../../assets/img/star.png';
 
@@ -18,14 +18,12 @@ const Header = () => {
           <p>
             Like Pure CSS Loaders?&nbsp;
             <span> </span>
-            <a className="anchor" href="">
+            <a className="anchor" href="/">
               Give our repo a star.
               <span> </span>
               <button className="btn">
                 <img className="star" src={star} alt="Star" />
-                <p>
-                  Star
-                </p>
+                <p>Star</p>
               </button>
               <span> </span>
               <span>&#62;</span>
@@ -34,7 +32,7 @@ const Header = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Header;
