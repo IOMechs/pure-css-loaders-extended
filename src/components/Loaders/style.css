@@ -1,0 +1,12 @@
+.loaders-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-gap: 1em;
+  grid-auto-rows: 100px;
+  background: #4270b5;
+  margin: 80px;
+  align-items: center;
+}
+.loaders-container > div {
+  justify-self: center;
+}
