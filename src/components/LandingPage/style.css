@@ -1,4 +1,11 @@
-.landingPage {
-  height: 100vh;
-  background-color: #EEEEEE;
+.landing-page {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  background: url('../../assets/img/bg.jpg');
+  background-size: cover;
+}
+
+.landing-page__content {
+  padding: 20px;
 }
