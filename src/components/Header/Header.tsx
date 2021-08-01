@@ -1,5 +1,6 @@
 import './style.css';
 import logo from '../../assets/logo/iomechs-logo.png';
+import GitHubButton from 'react-github-btn';
 
 const Header = () => {
   return (
@@ -16,16 +17,13 @@ const Header = () => {
         <div className="title header_text">Pure CSS Loaders (configurable)</div>
         <div className="repo_link_container header_text">
           <span> Like Pure CSS Loaders? Give our repo a &nbsp; </span>
-          <a
-            className="github-button"
+          <GitHubButton
             href="https://github.com/iomechs/pure-css-loaders"
             data-icon="octicon-star"
-            aria-label="Star ntkme/github-buttons on GitHub"
-            target="_blank"
-            rel="noopener noreferrer"
+            aria-label="Star iomechs/pure-css-loaders on GitHub"
           >
             Star
-          </a>
+          </GitHubButton>
         </div>
       </div>
     </div>
