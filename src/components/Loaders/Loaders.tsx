@@ -1,6 +1,7 @@
 import { useEffect, useState, Children, useRef } from "react";
 import LoadersData from '../../constants/getLoadersData';
 import Loader from "../../Interfaces/Loader";
+// import Modal from "../Modal";
 import './style.css';
 
 const LoadersComponent = () => {
@@ -17,9 +18,10 @@ const LoadersComponent = () => {
   }, [])
   return (
     <div ref={loaderContainerRef} className="loaders-container">
+      {/* <Modal /> */}
       {Children.toArray(
         loaders.map(loaderData => (
-          <div dangerouslySetInnerHTML={{ __html: loaderData.html}} />
+          <div className="loader-body" dangerouslySetInnerHTML={{ __html: loaderData.html}} />
         ))
       )}
     </div>

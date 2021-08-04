@@ -3,14 +3,17 @@
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 1em;
   grid-auto-rows: 100px;
-  background: rgba(51, 51, 51, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  background: #33333340;
+  box-shadow: 0 8px 32px 0 #1f26875e;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid #ffffff2e;
   align-items: center;
 }
 .loaders-container > div {
   justify-self: center;
+}
+.loader-body:hover {
+  cursor: pointer;
 }
