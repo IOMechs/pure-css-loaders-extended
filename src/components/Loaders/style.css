@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-gap: 1em;
-  grid-auto-rows: 100px;
+  grid-auto-rows: 140px;
   background: #33333340;
   box-shadow: 0 8px 32px 0 #1f26875e;
   backdrop-filter: blur(4px);
@@ -11,9 +11,19 @@
   border: 1px solid #ffffff2e;
   align-items: center;
 }
+/* .loaders-container > div > div {
+  border: 1px solid red;
+} */
 .loaders-container > div {
   justify-self: center;
+  /* border: 1px solid blue; */
 }
 .loader-body:hover {
   cursor: pointer;
+}
+.source-text {
+  visibility: hidden;
+}
+.loader-body:hover > .source-text {
+  visibility: visible;
 }
