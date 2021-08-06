@@ -1,17 +1,25 @@
+import {FC} from "react";
+import Loader from "../../Interfaces/Loader";
+import CleanCSS from 'clean-css';
+
 import "./style.css";
 
-const Modal = ({selectedHtml="", selectedCss=""}) => {
-  console.log(`\n\nfrom modal`);
-  console.log(`\n\nhtml => `,selectedHtml, `\n\ncss => `,selectedCss);
+type ModalProps = {
+  mySelectedLoader: Loader;
+  onOutsideClick: () => void
+}
+
+const Modal: FC<ModalProps> = ({ mySelectedLoader, onOutsideClick }) => {
+  const readableCSS = new CleanCSS({format: 'beautify'}).minify(mySelectedLoader.cssRules);
   return (
-    <div className="modal-container">
+    <div className="modal-container" onClick={onOutsideClick}>
       <div className="modal-body">
         <div className="html-container">
-          {selectedHtml}
+          {mySelectedLoader.html}
         </div>
-        <div className="css-container">
-          {selectedCss}
-        </div>
+        <pre className="css-container">
+          {readableCSS.styles}
+        </pre>
       </div>
     </div>
   )

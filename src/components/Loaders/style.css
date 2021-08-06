@@ -11,12 +11,8 @@
   border: 1px solid #ffffff2e;
   align-items: center;
 }
-/* .loaders-container > div > div {
-  border: 1px solid red;
-} */
 .loaders-container > div {
   justify-self: center;
-  /* border: 1px solid blue; */
 }
 .loader-body:hover {
   cursor: pointer;
