@@ -1,0 +1,32 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #1f26875e;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+.modal-body {
+  height: 90%;
+  max-width: 50%;
+  background-color: white;
+  border-radius: 5px;
+}
+.html-container {
+  padding: 5px;
+  border-bottom: 0.5px dashed;
+  height: 30%;
+  width: 100%;
+  overflow: auto;
+}
+.css-container {
+  padding: 5px;
+  height: 70%;
+  width: 100%;
+  overflow: auto;
+}
