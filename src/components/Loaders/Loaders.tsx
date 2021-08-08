@@ -34,21 +34,17 @@ const LoadersComponent = () => {
         console.log('default works');
     }
   }
-  function applyStyles() {
+
+  useEffect(() => {
     const styleEle = document.createElement('Style');
-    styleEle.innerText = loaders
-      .map((loaderData) => loaderData.cssRules)
-      .join('');
+    styleEle.innerText = LoadersData.map(
+      (loaderData) => loaderData.cssRules
+    ).join('');
     if (loaderContainerRef && loaderContainerRef.current) {
       loaderContainerRef.current.append(styleEle);
     }
-  }
-  useEffect(() => {
     setLoaders([...LoadersData]);
   }, []);
-  useEffect(() => {
-    applyStyles();
-  }, [loaders]);
   const showLoaderDetails = (data: Loader) => {
     setSelectedLoader({ ...data });
     goToService(data);
