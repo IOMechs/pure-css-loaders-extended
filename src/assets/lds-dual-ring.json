@@ -1,7 +1,7 @@
 {
   "name": "Loader Dual Ring",
   "id": "lds-dual-ring",
-  "size": "80px",
+  "size": "64px",
   "color": "#fafafa",
   "html": "<div class='lds-dual-ring'></div>",
   "cssRules": ".lds-dual-ring{display:inline-block;width:80px;height:80px}.lds-dual-ring:after{content:' ';display:block;width:64px;height:64px;margin:8px;border-radius:50%;border:6px solid #fafafa;border-color:#fafafa transparent #fafafa transparent;animation:lds-dual-ring 1.2s linear infinite}@keyframes lds-dual-ring{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}"
