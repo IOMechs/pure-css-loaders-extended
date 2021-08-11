@@ -131,12 +131,12 @@ const LoadersComponent = () => {
         return;
     }
     console.log(newLoaderInfo);
-    const transformLoaders = loaders.map((loader: Loader) => {
-      if (newLoaderInfo.id === loader.id) {
-        return newLoaderInfo;
-      }
-      return loader;
-    });
+    // const transformLoaders = loaders.map((loader: Loader) => {
+    //   if (newLoaderInfo.id === loader.id) {
+    //     return newLoaderInfo;
+    //   }
+    //   return loader;
+    // });
   }
 
   const addStyleOnDOM = useCallback(() => {
