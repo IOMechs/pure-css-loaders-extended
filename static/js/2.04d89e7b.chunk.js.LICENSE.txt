@@ -5,21 +5,16 @@ object-assign
 */
 
 /*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <http://feross.org>
- * @license  MIT
- */
+  Copyright (c) 2018 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
 
 /*!
  * github-buttons v2.18.1
  * (c) 2021 なつき
  * @license BSD-2-Clause
  */
-
-/*! https://mths.be/punycode v1.4.1 by @mathias */
-
-/*! ieee754. BSD-3-Clause License. Feross Aboukhadijeh <https://feross.org/opensource> */
 
 /** @license React v0.20.2
  * scheduler.production.min.js
