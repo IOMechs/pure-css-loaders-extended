@@ -1,5 +1,18 @@
-import { useEffect, useState, Children, useRef } from 'react';
-import LoadersData, { LoaderCircle } from '../../constants/getLoadersData';
+import { useEffect, useState, Children, useRef, useCallback } from 'react';
+import LoadersData, {
+  LoaderCircle,
+  LoaderDefault,
+  LoaderDualRing,
+  LoaderEllipsis,
+  LoaderFacebook,
+  LoaderGrid,
+  LoaderHeart,
+  LoaderHourglass,
+  LoaderRing,
+  LoaderRipple,
+  LoaderRoller,
+  LoaderSpinner,
+} from '../../constants/getLoadersData';
 import Loader from '../../Interfaces/Loader';
 import { LdsAnimationDirections } from '../../LdsAnimationDirections';
 import { LoaderService } from '../../LoaderService';
@@ -13,41 +26,140 @@ const LoadersComponent = () => {
   const loaderContainerRef = useRef<HTMLDivElement>(null);
   const loaderService = new LoaderService();
 
-  function goToService(selectedLoader: Loader) {
-    const newLoaderInfo: Loader = loaderService.configureLdsCircle(
-      selectedLoader,
-      'red',
-      '80px',
-      LdsAnimationDirections.lrt
-    );
-    const transformLoaders = loaders.map((loader: Loader) => {
-      if (newLoaderInfo.id === loader.id) {
-        return newLoaderInfo;
-      }
-      return loader;
-    });
+  function transformLoader(selectedLoader: Loader) {
+    let newLoaderInfo: Loader;
+    const color = 'blue';
+    const size = '60px';
     switch (selectedLoader.id) {
       case LoaderCircle.id:
-        console.log(transformLoaders);
+        newLoaderInfo = loaderService.configureLdsCircle(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderDefault.id:
+        newLoaderInfo = loaderService.configureLdsDefault(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderDualRing.id:
+        newLoaderInfo = loaderService.configureLdsDualRing(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderEllipsis.id:
+        newLoaderInfo = loaderService.configureLdsEllipsis(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderFacebook.id:
+        newLoaderInfo = loaderService.configureLdsFacebook(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderGrid.id:
+        newLoaderInfo = loaderService.configureLdsGrid(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderHeart.id:
+        newLoaderInfo = loaderService.configureLdsHeart(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderHourglass.id:
+        newLoaderInfo = loaderService.configureLdsHourGlass(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderRing.id:
+        newLoaderInfo = loaderService.configureLdsRing(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderRipple.id:
+        newLoaderInfo = loaderService.configureLdsRipple(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderRoller.id:
+        newLoaderInfo = loaderService.configureLdsRoller(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
+        break;
+      case LoaderSpinner.id:
+        newLoaderInfo = loaderService.configureLdsSpinner(
+          selectedLoader,
+          color,
+          size,
+          LdsAnimationDirections.lrt
+        );
         break;
       default:
-        console.log('default works');
+        return;
     }
+    console.log(newLoaderInfo);
+    // const transformLoaders = loaders.map((loader: Loader) => {
+    //   if (newLoaderInfo.id === loader.id) {
+    //     return newLoaderInfo;
+    //   }
+    //   return loader;
+    // });
   }
 
-  useEffect(() => {
+  const addStyleOnDOM = useCallback(() => {
     const styleEle = document.createElement('Style');
-    styleEle.innerText = LoadersData.map(
-      (loaderData) => loaderData.cssRules
-    ).join('');
+    styleEle.innerText = loaders
+      .map((loaderData) => loaderData.cssRules)
+      .join('');
     if (loaderContainerRef && loaderContainerRef.current) {
       loaderContainerRef.current.append(styleEle);
     }
+  }, [loaders]);
+
+  useEffect(() => {
     setLoaders([...LoadersData]);
   }, []);
+
+  useEffect(() => {
+    addStyleOnDOM();
+  }, [addStyleOnDOM]);
+
   const showLoaderDetails = (data: Loader) => {
     setSelectedLoader({ ...data });
-    goToService(data);
+    transformLoader(data);
     setModal(!modal);
   };
   const hideLoaderDetails = () => {
