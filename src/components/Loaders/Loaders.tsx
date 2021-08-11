@@ -16,12 +16,16 @@ import LoadersData, {
 import Loader from '../../Interfaces/Loader';
 import { LdsAnimationDirections } from '../../LdsAnimationDirections';
 import { LoaderService } from '../../LoaderService';
-import Modal from '../Modal';
+import Modal from 'react-bootstrap/Modal';
 import './style.css';
 
 const LoadersComponent = () => {
   const [loaders, setLoaders] = useState<Loader[] | []>([]);
-  const [modal, setModal] = useState<boolean>(false);
+  const [modalShown, setModalShown] = useState(false);
+
+  const handleCloseModal = () => setModalShown(false);
+  const handleShowModal = () => setModalShown(true);
+
   const [selectedLoader, setSelectedLoader] = useState<Loader>();
   const loaderContainerRef = useRef<HTMLDivElement>(null);
   const loaderService = new LoaderService();
@@ -160,19 +164,10 @@ const LoadersComponent = () => {
   const showLoaderDetails = (data: Loader) => {
     setSelectedLoader({ ...data });
     transformLoader(data);
-    setModal(!modal);
-  };
-  const hideLoaderDetails = () => {
-    setModal(!modal);
+    handleShowModal();
   };
   return (
     <div ref={loaderContainerRef} className="loaders-container">
-      {modal && selectedLoader && (
-        <Modal
-          mySelectedLoader={selectedLoader}
-          onOutsideClick={hideLoaderDetails}
-        />
-      )}
       {Children.toArray(
         loaders.map((loaderData) => (
           <div
@@ -184,6 +179,24 @@ const LoadersComponent = () => {
           </div>
         ))
       )}
+      <Modal show={modalShown} onHide={handleCloseModal}>
+        <Modal.Header closeButton>
+          <Modal.Title>{selectedLoader?.name}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <div contentEditable>{selectedLoader?.html}</div>
+          <div
+            style={{
+              marginTop: '10px',
+              marginBottom: '10px',
+              backgroundColor: '#333',
+              height: '1px',
+              width: '100%',
+            }}
+          ></div>
+          <div contentEditable>{selectedLoader?.cssRules}</div>
+        </Modal.Body>
+      </Modal>
     </div>
   );
 };
