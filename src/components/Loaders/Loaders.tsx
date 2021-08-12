@@ -140,7 +140,7 @@ const LoadersComponent = () => {
     setLoaders(transformLoaders);
   }
 
-  function applyStyles() {
+  function addStyleOnDOM() {
     const styleEle = document.createElement('Style');
     styleEle.innerText = loaders
       .map((loaderData) => loaderData.cssRules)
@@ -151,13 +151,13 @@ const LoadersComponent = () => {
   }
 
   useEffect(() => {
-    applyStyles();
+    addStyleOnDOM();
     setLoaders([...LoadersData]);
-  }, []);
+  }, [addStyleOnDOM]);
 
   useEffect(() => {
-    applyStyles();
-  }, [loaders]);
+    addStyleOnDOM();
+  }, [loaders, addStyleOnDOM]);
 
   const showLoaderDetails = (data: Loader) => {
     setSelectedLoader({ ...data });
