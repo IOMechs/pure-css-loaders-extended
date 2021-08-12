@@ -130,14 +130,13 @@ const LoadersComponent = () => {
       default:
         return;
     }
+    console.log(newLoaderInfo);
     const transformLoaders = loaders.map((loader: Loader) => {
       if (newLoaderInfo.id === loader.id) {
         return newLoaderInfo;
       }
       return loader;
     });
-    console.log(transformLoaders);
-    setLoaders(transformLoaders);
   }
 
   const addStyleOnDOM = useCallback(() => {
