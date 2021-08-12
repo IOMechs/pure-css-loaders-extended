@@ -1,4 +1,4 @@
-import { useEffect, useState, Children, useRef } from 'react';
+import { useEffect, useState, Children, useRef, useCallback } from 'react';
 import LoadersData, {
   LoaderCircle,
   LoaderDefault,
@@ -140,7 +140,7 @@ const LoadersComponent = () => {
     setLoaders(transformLoaders);
   }
 
-  function addStyleOnDOM() {
+  const addStyleOnDOM = useCallback(() => {
     const styleEle = document.createElement('Style');
     styleEle.innerText = loaders
       .map((loaderData) => loaderData.cssRules)
@@ -148,16 +148,15 @@ const LoadersComponent = () => {
     if (loaderContainerRef && loaderContainerRef.current) {
       loaderContainerRef.current.append(styleEle);
     }
-  }
+  }, [loaders]);
 
   useEffect(() => {
-    addStyleOnDOM();
     setLoaders([...LoadersData]);
-  }, [addStyleOnDOM]);
+  }, []);
 
   useEffect(() => {
     addStyleOnDOM();
-  }, [loaders, addStyleOnDOM]);
+  }, [addStyleOnDOM]);
 
   const showLoaderDetails = (data: Loader) => {
     setSelectedLoader({ ...data });
