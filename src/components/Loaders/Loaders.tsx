@@ -20,7 +20,6 @@ import Modal from 'react-bootstrap/Modal';
 import './style.css';
 import CleanCSS from 'clean-css';
 import { Badge } from 'react-bootstrap';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const LoadersComponent = () => {
   const [loaders, setLoaders] = useState<Loader[] | []>([]);
