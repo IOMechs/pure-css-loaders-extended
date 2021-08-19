@@ -23,3 +23,27 @@
 .loader-body:hover > .source-text {
   visibility: visible;
 }
+
+.css-container {
+  padding: 5px;
+  height: 70%;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal-body {
+  height: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.modal-loader {
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  padding: 16px 0px;
+  margin-bottom: 2em;
+}
