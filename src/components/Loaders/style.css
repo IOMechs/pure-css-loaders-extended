@@ -47,3 +47,20 @@
   padding: 16px 0px;
   margin-bottom: 2em;
 }
+
+.modal-html-text {
+  display: flex;
+  width: 86%;
+  flex-wrap: wrap;
+}
+
+.modal-html-text .badge {
+  right: 6%;
+  margin-top: 4px;
+}
+
+.badge {
+  position: absolute;
+  right: 8%;
+  cursor: pointer;
+}

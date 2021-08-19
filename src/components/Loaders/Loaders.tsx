@@ -19,6 +19,8 @@ import { LoaderService } from '../../LoaderService';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
 import CleanCSS from 'clean-css';
+import { Badge } from 'react-bootstrap';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const LoadersComponent = () => {
   const [loaders, setLoaders] = useState<Loader[] | []>([]);
@@ -191,8 +193,21 @@ const LoadersComponent = () => {
             className="modal-loader"
             dangerouslySetInnerHTML={{ __html: selectedLoader?.html || '' }}
           />
+          <h6 className="modal-html-text-header">HTML</h6>
           <div contentEditable={true} suppressContentEditableWarning={true}>
-            {selectedLoader?.html}
+            <div className="modal-html-text">
+              {selectedLoader?.html}
+              <Badge
+                className="badge"
+                contentEditable={false}
+                bg="secondary"
+                onClick={() => {
+                  navigator.clipboard.writeText(selectedLoader?.html || '');
+                }}
+              >
+                Copy
+              </Badge>{' '}
+            </div>
           </div>
           <div
             style={{
@@ -203,11 +218,22 @@ const LoadersComponent = () => {
               width: '100%',
             }}
           ></div>
+          <h6 className="modal-css-text-header">CSS</h6>
           <pre
             contentEditable={true}
             suppressContentEditableWarning={true}
             className="css-container"
           >
+            <Badge
+              className="badge"
+              contentEditable={false}
+              bg="secondary"
+              onClick={() => {
+                navigator.clipboard.writeText(selectedLoader?.cssRules || '');
+              }}
+            >
+              Copy
+            </Badge>{' '}
             {selectedLoader?.cssRules}
           </pre>
         </Modal.Body>
