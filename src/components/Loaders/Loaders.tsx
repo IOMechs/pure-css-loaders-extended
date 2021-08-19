@@ -18,6 +18,7 @@ import { LdsAnimationDirections } from '../../LdsAnimationDirections';
 import { LoaderService } from '../../LoaderService';
 import Modal from 'react-bootstrap/Modal';
 import './style.css';
+import CleanCSS from 'clean-css';
 
 const LoadersComponent = () => {
   const [loaders, setLoaders] = useState<Loader[] | []>([]);
@@ -30,6 +31,7 @@ const LoadersComponent = () => {
   const loaderContainerRef = useRef<HTMLDivElement>(null);
   const loaderService = new LoaderService();
 
+  let readableCSS: any;
   function transformLoader(selectedLoader: Loader) {
     let newLoaderInfo: Loader;
     const color = 'blue';
@@ -162,7 +164,8 @@ const LoadersComponent = () => {
   }, [addStyleOnDOM]);
 
   const showLoaderDetails = (data: Loader) => {
-    setSelectedLoader({ ...data });
+    readableCSS = new CleanCSS({ format: 'beautify' }).minify(data.cssRules);
+    setSelectedLoader({ ...data, cssRules: readableCSS.styles });
     transformLoader(data);
     handleShowModal();
   };
@@ -184,7 +187,13 @@ const LoadersComponent = () => {
           <Modal.Title>{selectedLoader?.name}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <div contentEditable>{selectedLoader?.html}</div>
+          <div
+            className="modal-loader"
+            dangerouslySetInnerHTML={{ __html: selectedLoader?.html || '' }}
+          />
+          <div contentEditable={true} suppressContentEditableWarning={true}>
+            {selectedLoader?.html}
+          </div>
           <div
             style={{
               marginTop: '10px',
@@ -194,7 +203,13 @@ const LoadersComponent = () => {
               width: '100%',
             }}
           ></div>
-          <div contentEditable>{selectedLoader?.cssRules}</div>
+          <pre
+            contentEditable={true}
+            suppressContentEditableWarning={true}
+            className="css-container"
+          >
+            {selectedLoader?.cssRules}
+          </pre>
         </Modal.Body>
       </Modal>
     </div>
