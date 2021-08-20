@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/pure-css-loaders/static/css/main.1a699e42.chunk.css",
+    "main.css": "/pure-css-loaders/static/css/main.be9ffa8b.chunk.css",
     "main.js": "/pure-css-loaders/static/js/main.88fef701.chunk.js",
     "main.js.map": "/pure-css-loaders/static/js/main.88fef701.chunk.js.map",
     "runtime-main.js": "/pure-css-loaders/static/js/runtime-main.629d6cf6.js",
@@ -10,7 +10,7 @@
     "static/js/2.5d39debc.chunk.js.map": "/pure-css-loaders/static/js/2.5d39debc.chunk.js.map",
     "index.html": "/pure-css-loaders/index.html",
     "static/css/2.4be38407.chunk.css.map": "/pure-css-loaders/static/css/2.4be38407.chunk.css.map",
-    "static/css/main.1a699e42.chunk.css.map": "/pure-css-loaders/static/css/main.1a699e42.chunk.css.map",
+    "static/css/main.be9ffa8b.chunk.css.map": "/pure-css-loaders/static/css/main.be9ffa8b.chunk.css.map",
     "static/js/2.5d39debc.chunk.js.LICENSE.txt": "/pure-css-loaders/static/js/2.5d39debc.chunk.js.LICENSE.txt",
     "static/media/style.css": "/pure-css-loaders/static/media/bg.b32694bc.jpg",
     "static/media/iomechs-logo.7eca13a5.png": "/pure-css-loaders/static/media/iomechs-logo.7eca13a5.png"
@@ -19,7 +19,7 @@
     "static/js/runtime-main.629d6cf6.js",
     "static/css/2.4be38407.chunk.css",
     "static/js/2.5d39debc.chunk.js",
-    "static/css/main.1a699e42.chunk.css",
+    "static/css/main.be9ffa8b.chunk.css",
     "static/js/main.88fef701.chunk.js"
   ]
 }
