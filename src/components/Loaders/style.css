@@ -1,6 +1,6 @@
 .loaders-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
   grid-gap: 1em;
   grid-auto-rows: 140px;
   background: #33333340;
@@ -10,6 +10,8 @@
   border-radius: 10px;
   border: 1px solid #ffffff2e;
   align-items: center;
+  padding-top: 22px;
+  min-height: 480px;
 }
 .loaders-container > div {
   justify-self: center;
