@@ -1,11 +1,9 @@
-import './style.css';
-import Header from '../Header';
-import Loaders from '../Loaders';
+import './LandingPage.css';
+import Loaders from '../../components/Loaders';
 
 const LandingPage = () => {
   return (
     <div className="landing-page">
-      <Header />
       <div className="landing-page__content">
         <Loaders />
       </div>

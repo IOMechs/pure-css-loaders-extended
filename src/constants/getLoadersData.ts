@@ -10,34 +10,21 @@ import LRing from '../assets/lds-ring.json';
 import LRipple from '../assets/lds-ripple.json';
 import LRoller from '../assets/lds-roller.json';
 import LSpinner from '../assets/lds-spinner.json';
-import Loader from '../Interfaces/Loader';
+import Loader from '../classes/Loader';
+import LoaderHeart from '../classes/LoaderHeart';
 
 const Loaders: Loader[] = [
-  LCircle,
-  LDefault,
-  LDualRing,
-  LEllipsis,
-  LFacebook,
-  LGrid,
-  LHeart,
-  LHourglass,
-  LRing,
-  LRipple,
-  LRoller,
-  LSpinner,
+  new Loader(LCircle),
+  new Loader(LDefault),
+  new Loader(LDualRing),
+  new Loader(LEllipsis),
+  new Loader(LFacebook),
+  new Loader(LGrid),
+  new LoaderHeart(LHeart),
+  new Loader(LHourglass),
+  new Loader(LRing),
+  new Loader(LRipple),
+  new Loader(LRoller),
+  new Loader(LSpinner),
 ];
-
-export const LoaderCircle = LCircle;
-export const LoaderDefault = LDefault;
-export const LoaderDualRing = LDualRing;
-export const LoaderEllipsis = LEllipsis;
-export const LoaderFacebook = LFacebook;
-export const LoaderGrid = LGrid;
-export const LoaderHeart = LHeart;
-export const LoaderHourglass = LHourglass;
-export const LoaderRing = LRing;
-export const LoaderRipple = LRipple;
-export const LoaderRoller = LRoller;
-export const LoaderSpinner = LSpinner;
-
 export default Loaders;
