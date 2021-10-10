@@ -59,10 +59,54 @@ export class LoaderService {
     size: string,
     animationDirection: any
   ) {
+    var height, width;
+    height = width = parseInt(obj.size)
+
+    const keyFrame0top = height*0.1;
+    const keyFrame0height = height - keyFrame0top*2;
+    
+    const keyFrame100height = keyFrame0height/2;
+    const keyFrame100top = (height - keyFrame100height)/2
+    
+    obj.cssRules = this.replaceKeyframe0Values(
+      obj.cssRules,
+      keyFrame0top,
+      keyFrame0height
+    )
+
+    obj.cssRules = this.replaceKeyframe100Values(
+      obj.cssRules,
+      keyFrame100top,
+      keyFrame100height
+    )
+
+    obj.cssRules = this.replaceSizeValues(
+      obj.cssRules,
+      obj.size
+    )
+
+    for(const i of Array.from(Array(3).keys())){
+      let re = new RegExp(`(\\(${i+1}\\){).*?(;animation)`)
+
+      const pos = Math.floor((width * (0.1 + (0.1 * i*3) ) ))
+
+      obj.cssRules = obj.cssRules
+      .replace(
+        re, 
+        `$1left:${pos}px$2`
+      )
+    }
+
+    obj.cssRules = obj.cssRules
+    .replace(
+      /(8px;).*(;back)/, 
+      `$1width:${width*0.2}px$2`
+    )
+    
     return {
       ...obj,
       cssRules: obj.cssRules
-        .replaceAll(obj.size, size)
+        // .replaceAll(obj.size, size)
         .replaceAll(obj.color, color),
     };
   }
@@ -156,5 +200,40 @@ export class LoaderService {
         .replaceAll(obj.size, size)
         .replaceAll(obj.color, color),
     };
+  }
+
+  replaceKeyframe0Values(
+    cssString: string,
+    keyFrametop: number,
+    keyFrameheight: number
+  ){
+    return cssString
+      .replace(
+        /({0%{).*(}100%)/,
+        `$1top:${keyFrametop}px;height:${keyFrameheight}px$2`
+      )
+  }
+
+  replaceKeyframe100Values(
+    cssString: string,
+    keyFrametop: number,
+    keyFrameheight: number
+  ){
+    return cssString
+      .replace(
+        /(50%{).*?(})/,
+        `$1top:${keyFrametop}px;height:${keyFrameheight}px$2`
+      )
+  }
+
+  replaceSizeValues(
+    cssString: string,
+    size: string,
+  ){
+    return cssString
+      .replace(
+        /(relative;).*?(}\.lds)/,
+        `$1width:${size};height:${size}$2`
+      )
   }
 }

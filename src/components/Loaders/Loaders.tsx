@@ -35,7 +35,7 @@ const LoadersComponent = () => {
   let readableCSS: any;
   function transformLoader(selectedLoader: Loader) {
     let newLoaderInfo: Loader;
-    const color = 'blue';
+    const color = '#fafafa';
     const size = '60px';
     switch (selectedLoader.id) {
       case LoaderCircle.id:
@@ -138,6 +138,7 @@ const LoadersComponent = () => {
         return;
     }
     console.log(newLoaderInfo);
+    return newLoaderInfo;
     // const transformLoaders = loaders.map((loader: Loader) => {
     //   if (newLoaderInfo.id === loader.id) {
     //     return newLoaderInfo;
@@ -165,9 +166,14 @@ const LoadersComponent = () => {
   }, [addStyleOnDOM]);
 
   const showLoaderDetails = (data: Loader) => {
-    readableCSS = new CleanCSS({ format: 'beautify' }).minify(data.cssRules);
+    const transformedLoaderData: Loader = transformLoader(data)?? data;
+    
+    const updatedloaders = loaders.map(lo => lo.id === transformedLoaderData.id? transformedLoaderData: lo)
+
+    setLoaders([...updatedloaders]);
+
+    readableCSS = new CleanCSS({ format: 'beautify' }).minify(transformedLoaderData.cssRules);
     setSelectedLoader({ ...data, cssRules: readableCSS.styles });
-    transformLoader(data);
     handleShowModal();
   };
   return (
