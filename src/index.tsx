@@ -8,25 +8,27 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
-    <div className="credits">
-      <h5>Credits:</h5>
-      <a
-        className="credit-link light"
-        href="https://loading.io/css"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Based on Pure CSS Loaders
-      </a>
-      <a
-        className="credit-link light"
-        href="https://www.freepik.com/vectors/background"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Background vector created by rocketpixel - www.freepik.com
-      </a>
+    <div className="app-wrapper">
+      <App />
+      <div className="credits">
+        <h5>Credits:</h5>
+        <a
+          className="credit-link light"
+          href="https://loading.io/css"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Based on Pure CSS Loaders
+        </a>
+        <a
+          className="credit-link light"
+          href="https://www.freepik.com/vectors/background"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Background vector created by rocketpixel - www.freepik.com
+        </a>
+      </div>
     </div>
   </React.StrictMode>,
   document.getElementById('root')
