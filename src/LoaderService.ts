@@ -59,6 +59,7 @@ export class LoaderService {
     size: string,
     animationDirection: any
   ) {
+    obj.cssRules = obj.cssRules.replace(/\n/g, '');
     var height, width;
     height = width = parseInt(obj.size)
 
@@ -86,7 +87,7 @@ export class LoaderService {
     )
 
     for(const i of Array.from(Array(3).keys())){
-      let re = new RegExp(`(\\(${i+1}\\){).*?(;animation)`)
+      let re = new RegExp(`(\\(${i+1}\\)\\s*{).*?(;\\s*animation)`)
 
       const pos = Math.floor((width * (0.1 + (0.1 * i*3) ) ))
 
@@ -99,7 +100,7 @@ export class LoaderService {
 
     obj.cssRules = obj.cssRules
     .replace(
-      /(8px;).*(;back)/, 
+      /(left:\s*8px;\s*).*(;\s*back)/, 
       `$1width:${width*0.2}px$2`
     )
     
@@ -209,7 +210,7 @@ export class LoaderService {
   ){
     return cssString
       .replace(
-        /({0%{).*(}100%)/,
+        /({\s*0%\s*{).*(}\s*100%)/,
         `$1top:${keyFrametop}px;height:${keyFrameheight}px$2`
       )
   }
@@ -221,7 +222,7 @@ export class LoaderService {
   ){
     return cssString
       .replace(
-        /(50%{).*?(})/,
+        /(50%\s*{\s*).*?(\s*})/,
         `$1top:${keyFrametop}px;height:${keyFrameheight}px$2`
       )
   }
@@ -232,7 +233,7 @@ export class LoaderService {
   ){
     return cssString
       .replace(
-        /(relative;).*?(}\.lds)/,
+        /(relative;\s*).*?(\s*}\.lds)/,
         `$1width:${size};height:${size}$2`
       )
   }

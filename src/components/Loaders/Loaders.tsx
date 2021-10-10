@@ -24,6 +24,7 @@ import { Badge } from 'react-bootstrap';
 const LoadersComponent = () => {
   const [loaders, setLoaders] = useState<Loader[] | []>([]);
   const [modalShown, setModalShown] = useState(false);
+  const [loaderSize, setLoaderSize] = useState('80px');
 
   const handleCloseModal = () => setModalShown(false);
   const handleShowModal = () => setModalShown(true);
@@ -36,7 +37,7 @@ const LoadersComponent = () => {
   function transformLoader(selectedLoader: Loader) {
     let newLoaderInfo: Loader;
     const color = '#fafafa';
-    const size = '60px';
+    const size = '80px';
     switch (selectedLoader.id) {
       case LoaderCircle.id:
         newLoaderInfo = loaderService.configureLdsCircle(
@@ -176,6 +177,15 @@ const LoadersComponent = () => {
     setSelectedLoader({ ...data, cssRules: readableCSS.styles });
     handleShowModal();
   };
+
+  const handleSizeInput = (event: HTMLInputElement) => {
+    setLoaderSize(event.value);
+    if(selectedLoader && selectedLoader.id === LoaderFacebook.id){
+      selectedLoader.size = event.value
+      showLoaderDetails(selectedLoader)
+    }
+  }
+
   return (
     <div ref={loaderContainerRef} className="loaders-container">
       {Children.toArray(
@@ -198,6 +208,13 @@ const LoadersComponent = () => {
             className="modal-loader"
             dangerouslySetInnerHTML={{ __html: selectedLoader?.html || '' }}
           />
+          <h6>Modify Style</h6>
+          <div className="flex-row">
+            <span>Size: </span>
+            <input type="text" className="size-input"
+            onChange={event => handleSizeInput(event.target)} 
+            value={loaderSize} />
+          </div>
           <h6 className="modal-html-text-header">HTML</h6>
           <div contentEditable={true} suppressContentEditableWarning={true}>
             <div className="modal-html-text">
