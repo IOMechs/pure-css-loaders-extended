@@ -51,15 +51,3 @@
   right: 8%;
   cursor: pointer;
 }
-
-.flex-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.size-input {
-  width: 50px;
-  height: 20px;
-  margin-left: 10px;
-}
