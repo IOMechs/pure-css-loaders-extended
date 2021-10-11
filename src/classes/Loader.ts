@@ -27,8 +27,11 @@ class Loader implements ILoader {
     ).styles;
   }
 
-  replaceStyles(changes: StyleChange[]): string {
+  replaceStyles(changes: StyleChange[], includeKeyframes: boolean = true): string {
     const styleSheet = parse(this.cssRules);
+    styleSheet.stylesheet!.rules = styleSheet.stylesheet!.rules.filter((rule: any) => {
+      return includeKeyframes || rule.type !== 'keyframes';
+    });
     changes.forEach((change: any) => {
       const rules = styleSheet.stylesheet!.rules!.filter((rule: any, i) => {
         return (
@@ -46,6 +49,41 @@ class Loader implements ILoader {
           if (declaration) {
             declaration.value = change.replacements[property];
           }
+        });
+      });
+    });
+    return stringify(styleSheet);
+  }
+
+  replaceKeyframeStyles(changes: StyleChange[]): string {
+    const styleSheet = parse(this.cssRules);
+    styleSheet.stylesheet!.rules = styleSheet.stylesheet!.rules.filter((rule: any) => {
+      return rule.type !== 'rule';
+    });
+    changes.forEach((change: any) => {
+      const keyframes = styleSheet.stylesheet!.rules.filter((rule: any, i) => {
+        return (
+          rule.type === 'keyframes' &&
+          rule.name === change.selector
+        );
+      });
+      keyframes.forEach((rule: any) => {
+        Object.keys(change.replacements).forEach((keyVal) => {
+          rule.keyframes.forEach((keyframe: any) => {
+            const keyframeVal = keyframe.values.some(
+              (val: string) => val === keyVal
+            )
+            if (keyframeVal) {
+              Object.keys(change.replacements[keyVal]).forEach((property) => {
+                const declaration = keyframe.declarations.find(
+                  (dec: any) => dec.property === property
+                );
+                if (declaration) {
+                  declaration.value = change.replacements[keyVal][property];
+                }
+              });
+            }
+          });
         });
       });
     });
