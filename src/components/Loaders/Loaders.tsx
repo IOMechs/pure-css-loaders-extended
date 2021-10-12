@@ -36,6 +36,7 @@ const LoadersComponent = () => {
     setSelectedLoader(loader);
     handleShowModal();
   };
+
   return (
     <div ref={loaderContainerRef} className="loaders-container">
       {Children.toArray(

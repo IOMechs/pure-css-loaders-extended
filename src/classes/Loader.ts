@@ -2,6 +2,7 @@ import ILoader from '../Interfaces/Loader';
 import CleanCSS from 'clean-css';
 import { parse, stringify } from 'css';
 import StyleChange from '../Interfaces/StyleChange';
+import KeyframeChange from '../Interfaces/KeyframeChange';
 class Loader implements ILoader {
   name: string;
   id: string;
@@ -29,6 +30,7 @@ class Loader implements ILoader {
 
   replaceStyles(changes: StyleChange[]): string {
     const styleSheet = parse(this.cssRules);
+
     changes.forEach((change: any) => {
       const rules = styleSheet.stylesheet!.rules!.filter((rule: any, i) => {
         return (
@@ -46,6 +48,39 @@ class Loader implements ILoader {
           if (declaration) {
             declaration.value = change.replacements[property];
           }
+        });
+      });
+    });
+    return stringify(styleSheet);
+  }
+
+  replaceKeyframeStyles(changes: KeyframeChange[], cssRules?: string): string {
+    const styleSheet = parse(cssRules?? this.cssRules);
+
+    changes.forEach((change: any) => {
+      const keyframes = styleSheet.stylesheet!.rules.filter((rule: any, i) => {
+        return (
+          rule.type === 'keyframes' &&
+          rule.name === change.selector
+        );
+      });
+      keyframes.forEach((rule: any) => {
+        Object.keys(change.replacements).forEach((keyVal) => {
+          rule.keyframes.forEach((keyframe: any) => {
+            const keyframeVal = keyframe.values.some(
+              (val: string) => val === keyVal
+            )
+            if (keyframeVal) {
+              Object.keys(change.replacements[keyVal]).forEach((property) => {
+                const declaration = keyframe.declarations.find(
+                  (dec: any) => dec.property === property
+                );
+                if (declaration) {
+                  declaration.value = change.replacements[keyVal][property];
+                }
+              });
+            }
+          });
         });
       });
     });
