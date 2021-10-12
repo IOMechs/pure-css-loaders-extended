@@ -5,10 +5,10 @@ class LoaderFacebook extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
 
-    const keyFrame0top = newSizeInt*0.1;
-    const keyFrame0height = newSizeInt - keyFrame0top*2;
-    const keyFrame100height = keyFrame0height/2;
-    const keyFrame100top = (newSizeInt - keyFrame100height)/2;
+    const keyFrame0top = newSizeInt * 0.1;
+    const keyFrame0height = newSizeInt - keyFrame0top * 2;
+    const keyFrame100height = keyFrame0height / 2;
+    const keyFrame100top = (newSizeInt - keyFrame100height) / 2;
 
     const ruleChanges: StyleChange[] = [
       {
@@ -46,19 +46,19 @@ class LoaderFacebook extends Loader {
     let replacedStyles = super.replaceStyles(ruleChanges);
 
     const keyframesChanges: KeyframeChange[] = [
-        {
-            selector: 'lds-facebook',
-            replacements: {
-                '0%': {
-                    top: `${keyFrame0top}px`,
-                    height: `${keyFrame0height}px`,
-                },
-                '100%': {
-                    top: `${keyFrame100top}px`,
-                    height: `${keyFrame100height}px`
-                },
-            },
+      {
+        selector: 'lds-facebook',
+        replacements: {
+          '0%': {
+            top: `${keyFrame0top}px`,
+            height: `${keyFrame0height}px`,
+          },
+          '100%': {
+            top: `${keyFrame100top}px`,
+            height: `${keyFrame100height}px`
+          },
         },
+      },
     ];
     replacedStyles = super.replaceKeyframeStyles(keyframesChanges, replacedStyles);
 
