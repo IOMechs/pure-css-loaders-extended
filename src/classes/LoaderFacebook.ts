@@ -1,5 +1,6 @@
 import Loader from './Loader';
 import StyleChange from '../Interfaces/StyleChange';
+import KeyframeChange from '../Interfaces/KeyframeChange';
 class LoaderFacebook extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
@@ -42,9 +43,9 @@ class LoaderFacebook extends Loader {
         },
       },
     ];
-    let replacedStyles = super.replaceStyles(ruleChanges, false);
+    let replacedStyles = super.replaceStyles(ruleChanges);
 
-    const keyframesChanges: StyleChange[] = [
+    const keyframesChanges: KeyframeChange[] = [
         {
             selector: 'lds-facebook',
             replacements: {
@@ -59,8 +60,7 @@ class LoaderFacebook extends Loader {
             },
         },
     ];
-    const replacedKeyframes = super.replaceKeyframeStyles(keyframesChanges);
-    replacedStyles += '\n\n' + replacedKeyframes;
+    replacedStyles = super.replaceKeyframeStyles(keyframesChanges, replacedStyles);
 
     return {
       ...this,

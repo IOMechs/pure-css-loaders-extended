@@ -2,6 +2,7 @@ import ILoader from '../Interfaces/Loader';
 import CleanCSS from 'clean-css';
 import { parse, stringify } from 'css';
 import StyleChange from '../Interfaces/StyleChange';
+import KeyframeChange from '../Interfaces/KeyframeChange';
 class Loader implements ILoader {
   name: string;
   id: string;
@@ -27,11 +28,9 @@ class Loader implements ILoader {
     ).styles;
   }
 
-  replaceStyles(changes: StyleChange[], includeKeyframes: boolean = true): string {
+  replaceStyles(changes: StyleChange[]): string {
     const styleSheet = parse(this.cssRules);
-    styleSheet.stylesheet!.rules = styleSheet.stylesheet!.rules.filter((rule: any) => {
-      return includeKeyframes || rule.type !== 'keyframes';
-    });
+
     changes.forEach((change: any) => {
       const rules = styleSheet.stylesheet!.rules!.filter((rule: any, i) => {
         return (
@@ -55,11 +54,9 @@ class Loader implements ILoader {
     return stringify(styleSheet);
   }
 
-  replaceKeyframeStyles(changes: StyleChange[]): string {
-    const styleSheet = parse(this.cssRules);
-    styleSheet.stylesheet!.rules = styleSheet.stylesheet!.rules.filter((rule: any) => {
-      return rule.type !== 'rule';
-    });
+  replaceKeyframeStyles(changes: KeyframeChange[], cssRules?: string): string {
+    const styleSheet = parse(cssRules?? this.cssRules);
+
     changes.forEach((change: any) => {
       const keyframes = styleSheet.stylesheet!.rules.filter((rule: any, i) => {
         return (
