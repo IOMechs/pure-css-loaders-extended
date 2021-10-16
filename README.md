@@ -44,3 +44,13 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+<h1 align="center">PURE CSS LOADER</h1>
+
+<br />
+
+<div align="center">
+  <img src='./src/assets/img/app-screenshot.png' height="70%" width ="70%"  />
+ 
+ 
+ </div>
