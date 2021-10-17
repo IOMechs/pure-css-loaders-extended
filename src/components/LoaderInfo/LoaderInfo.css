@@ -14,7 +14,25 @@
   flex-wrap: wrap;
 }
 
-.modal-html-text .badge {
-  right: 6%;
-  margin-top: 4px;
+.badge {
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  width: 60px
 }
+
+.badge-text{  
+  margin: auto;
+  position: relative;
+}
+
+.badge-text-html{
+  font-size: 12px;
+  /* width: fit-content */
+
+}
+
+.badge-text-css{
+  font-size: 14px;
+}
+
