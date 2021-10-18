@@ -1,7 +1,7 @@
 name: 'Pull Request clean-up'
 
 on:
-  pull_request:
+  pull_request_target:
     types: [unlabeled, closed]
 
 jobs:
