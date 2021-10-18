@@ -3,6 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@aws-cdk/aws-cloudfront": "^1.128.0",
+    "@aws-cdk/aws-cloudfront-origins": "^1.128.0",
+    "@aws-cdk/aws-s3": "^1.128.0",
+    "@aws-cdk/aws-s3-deployment": "^1.128.0",
+    "@aws-cdk/core": "^1.128.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -14,6 +19,7 @@
     "lodash.clonedeep": "^4.5.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.4",
+    "react-color": "^2.19.3",
     "react-dom": "^17.0.2",
     "react-github-btn": "^1.2.0",
     "react-router-dom": "^5.2.0",
@@ -27,7 +33,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "bootstrap": "CDK_NEW_BOOTSTRAP=1 cdk bootstrap --cloudformation-execution-policies arn:aws:iam::aws:policy/AdministratorAccess",
+    "deploy": "cdk deploy \"AwesomeStack-${STAGE}\" --require-approval never --outputs-file cdk.out.json",
+    "postdeploy": "node --eval \"console.log('::set-output name=env_url::' + require('./cdk.out.json')['AwesomeStack-${STAGE}'].DeploymentUrl)\"",
+    "destroy": "cdk destroy \"AwesomeStack-${STAGE}\" --force"
   },
   "eslintConfig": {
     "extends": [
