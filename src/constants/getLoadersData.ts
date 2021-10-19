@@ -13,6 +13,7 @@ import LSpinner from '../assets/lds-spinner.json';
 import Loader from '../classes/Loader';
 import LoaderFacebook from '../classes/LoaderFacebook';
 import LoaderHeart from '../classes/LoaderHeart';
+import LoaderRipple from '../classes/LoaderRipple';
 
 const Loaders: Loader[] = [
   new Loader(LCircle),
@@ -24,7 +25,7 @@ const Loaders: Loader[] = [
   new LoaderHeart(LHeart),
   new Loader(LHourglass),
   new Loader(LRing),
-  new Loader(LRipple),
+  new LoaderRipple(LRipple),
   new Loader(LRoller),
   new Loader(LSpinner),
 ];
