@@ -11,6 +11,7 @@ class LoaderCircle extends Loader {
         replacements: {
           width: `${newSizeInt}px`,
           height: `${newSizeInt}px`,
+          background: color,
         },
       },
     ];
