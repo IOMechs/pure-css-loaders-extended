@@ -1,25 +1,25 @@
 {
   "files": {
     "main.css": "/static/css/main.3aae4af3.chunk.css",
-    "main.js": "/static/js/main.a244e4af.chunk.js",
-    "main.js.map": "/static/js/main.a244e4af.chunk.js.map",
+    "main.js": "/static/js/main.daf8e7da.chunk.js",
+    "main.js.map": "/static/js/main.daf8e7da.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.1474269a.js",
     "runtime-main.js.map": "/static/js/runtime-main.1474269a.js.map",
     "static/css/2.4be38407.chunk.css": "/static/css/2.4be38407.chunk.css",
-    "static/js/2.b58ed215.chunk.js": "/static/js/2.b58ed215.chunk.js",
-    "static/js/2.b58ed215.chunk.js.map": "/static/js/2.b58ed215.chunk.js.map",
+    "static/js/2.f13e33cb.chunk.js": "/static/js/2.f13e33cb.chunk.js",
+    "static/js/2.f13e33cb.chunk.js.map": "/static/js/2.f13e33cb.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.4be38407.chunk.css.map": "/static/css/2.4be38407.chunk.css.map",
     "static/css/main.3aae4af3.chunk.css.map": "/static/css/main.3aae4af3.chunk.css.map",
-    "static/js/2.b58ed215.chunk.js.LICENSE.txt": "/static/js/2.b58ed215.chunk.js.LICENSE.txt",
+    "static/js/2.f13e33cb.chunk.js.LICENSE.txt": "/static/js/2.f13e33cb.chunk.js.LICENSE.txt",
     "static/media/LandingPage.css": "/static/media/bg.b32694bc.jpg",
     "static/media/iomechs-logo.7eca13a5.png": "/static/media/iomechs-logo.7eca13a5.png"
   },
   "entrypoints": [
     "static/js/runtime-main.1474269a.js",
     "static/css/2.4be38407.chunk.css",
-    "static/js/2.b58ed215.chunk.js",
+    "static/js/2.f13e33cb.chunk.js",
     "static/css/main.3aae4af3.chunk.css",
-    "static/js/main.a244e4af.chunk.js"
+    "static/js/main.daf8e7da.chunk.js"
   ]
 }
