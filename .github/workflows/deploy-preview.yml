@@ -1,67 +1,29 @@
 name: 'Pull Request deploy'
 
-permissions:
-  deployments: write
-
 on:
-  pull_request_target:
+  pull_request:
     types: [labeled, opened, synchronize, assigned, reopened]
 
 jobs:
   deploy:
-    if: |
-      (github.event.action == 'labeled' && github.event.label.name == ':rocket: deploy') ||
-      (github.event.action != 'labeled' && contains(github.event.pull_request.labels.*.name, ':rocket: deploy'))
     runs-on: ubuntu-latest
-    permissions:
-      deployments: write
     steps:
-      - name: inject slug/short variables
-        uses: rlespinasse/github-slug-action@v3.x
+      - uses: actions/checkout@master
 
-      - name: set STAGE variable in environment for next steps
-        run: echo "STAGE=pr-${{ github.event.number }}-${{ env.GITHUB_HEAD_REF_SLUG }}" >> $GITHUB_ENV
+      - name: set branchname env
+        id: setenvname
+        run: |
+          # use GITHUB_HEAD_REF that is set to PR source branch
+          echo "##[set-output name=setbranchname;]$(echo ${GITHUB_HEAD_REF})"
 
-      - name: create a github deployment
-        uses: bobheadxi/deployments@v0.6.0
-        id: deployment
+      - name: deploy PR preview
+        uses: yinlinchen/amplify-preview-actions@master
         with:
-          step: start
-          token: ${{ secrets.GITHUB_TOKEN }}
-          env: ${{ env.STAGE }}
-          ref: ${{ github.head_ref }}
-          no_override: false
-          transient: true
-
-      - name: checkout the files
-        uses: actions/checkout@v2
-        with:
-          ref: ${{github.event.pull_request.head.ref}}
-          repository: ${{github.event.pull_request.head.repo.full_name}}
-
-      - name: install node dependencies
-        uses: bahmutov/npm-install@v1
-
-      - name: Build
-        run: export APP_BASE_NAME="/pure-css-loaders/" && npm run build
-
-      - name: configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: eu-west-3
-
-      - name: deploy the stack on AWS
-        id: cdk_deploy
-        run: yarn deploy
-
-      - name: update the github deployment status
-        uses: bobheadxi/deployments@v0.5.2
-        if: always()
-        with:
-          step: finish
-          token: ${{ secrets.GITHUB_TOKEN }}
-          status: ${{ job.status }}
-          deployment_id: ${{ steps.deployment.outputs.deployment_id }}
-          env_url: ${{ steps.cdk_deploy.outputs.env_url }}
+          branch_name: ${{ steps.setenvname.outputs.setbranchname }}
+          amplify_command: deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          AmplifyAppId: ${{ secrets.AMPLIFY_APP_ID }}
+          AWS_REGION: 'eu-central-1'
