@@ -12,11 +12,12 @@ import LRoller from '../assets/lds-roller.json';
 import LSpinner from '../assets/lds-spinner.json';
 import Loader from '../classes/Loader';
 import LoaderDualRing from '../classes/LoaderDualRing';
+import LoaderCircle from '../classes/LoaderCircle';
 import LoaderFacebook from '../classes/LoaderFacebook';
 import LoaderHeart from '../classes/LoaderHeart';
 
 const Loaders: Loader[] = [
-  new Loader(LCircle),
+  new LoaderCircle(LCircle),
   new Loader(LDefault),
   new LoaderDualRing(LDualRing),
   new Loader(LEllipsis),

@@ -1,23 +1,17 @@
 import Loader from './Loader';
 import StyleChange from '../Interfaces/StyleChange';
-class LoaderDualRing extends Loader {
+
+class LoaderCircle extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
 
     const changes: StyleChange[] = [
       {
-        selector: '.lds-dual-ring',
+        selector: '.lds-circle > div',
         replacements: {
           width: `${newSizeInt}px`,
           height: `${newSizeInt}px`,
-        },
-      },
-      {
-        selector: '.lds-dual-ring:after',
-        replacements: {
-          width: `${newSizeInt}px`,
-          height: `${newSizeInt}px`,
-          'border-color': `${color} transparent ${color} transparent`,
+          background: color,
         },
       },
     ];
@@ -28,10 +22,9 @@ class LoaderDualRing extends Loader {
       cssRules: replacedStyles,
     };
   }
-
   clone() {
-    return new LoaderDualRing({ ...this });
+    return new LoaderCircle({ ...this });
   }
 }
 
-export default LoaderDualRing;
+export default LoaderCircle;

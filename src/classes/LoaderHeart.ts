@@ -25,6 +25,7 @@ class LoaderHeart extends Loader {
           left: `${tailSize}px`,
           width: `${tailSize}px`,
           height: `${tailSize}px`,
+          background: color,
         },
       },
       {
@@ -34,6 +35,7 @@ class LoaderHeart extends Loader {
           left: `${bumpPos}px`,
           width: `${tailSize}px`,
           height: `${tailSize}px`,
+          background: color,
         },
       },
       {
@@ -43,6 +45,7 @@ class LoaderHeart extends Loader {
           left: `${bumpPos}px`,
           width: `${tailSize}px`,
           height: `${tailSize}px`,
+          background: color,
         },
       },
     ];
