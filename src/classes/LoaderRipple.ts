@@ -16,12 +16,12 @@ class LoaderRipple extends Loader {
           height: `${newSizeInt}px`,
         },
       },
-      // {
-      //   selector: '.lds-ripple div',
-      //   replacements: {
-      //     border: `4px solid ${color}`,
-      //   },
-      // },
+      {
+        selector: '.lds-ripple div',
+        replacements: {
+          border: `4px solid ${color}`,
+        },
+      }
     ];
     let replacedStyles = super.replaceStyles(changes);
 
