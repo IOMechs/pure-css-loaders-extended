@@ -22,6 +22,7 @@ class LoaderFacebook extends Loader {
         selector: '.lds-facebook div',
         replacements: {
           width: `${newSizeInt * 0.2}px`,
+          background: color,
         },
       },
       {
@@ -55,12 +56,15 @@ class LoaderFacebook extends Loader {
           },
           '100%': {
             top: `${keyFrame100top}px`,
-            height: `${keyFrame100height}px`
+            height: `${keyFrame100height}px`,
           },
         },
       },
     ];
-    replacedStyles = super.replaceKeyframeStyles(keyframesChanges, replacedStyles);
+    replacedStyles = super.replaceKeyframeStyles(
+      keyframesChanges,
+      replacedStyles
+    );
 
     return {
       ...this,
