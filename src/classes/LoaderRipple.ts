@@ -21,7 +21,7 @@ class LoaderRipple extends Loader {
         replacements: {
           border: `4px solid ${color}`,
         },
-      }
+      },
     ];
     let replacedStyles = super.replaceStyles(changes);
 
