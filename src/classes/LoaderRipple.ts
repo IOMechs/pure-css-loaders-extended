@@ -5,8 +5,8 @@ class LoaderRipple extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
 
-    const keyFrame0top = newSizeInt / 2;
-    const keyFrame100height = newSizeInt;
+    const keyFrameTop0 = newSizeInt / 2;
+    const keyFrameHeight100 = newSizeInt;
 
     const changes: StyleChange[] = [
       {
@@ -30,16 +30,16 @@ class LoaderRipple extends Loader {
         selector: 'lds-ripple',
         replacements: {
           '0%': {
-            top: `${keyFrame0top}px`,
-            left: `${keyFrame0top}px`,
+            top: `${keyFrameTop0}px`,
+            left: `${keyFrameTop0}px`,
             height: '0px',
             width: '0px',
           },
           '100%': {
             top: '0px',
             left: '0px',
-            height: `${keyFrame100height}px`,
-            width: `${keyFrame100height}px`,
+            height: `${keyFrameHeight100}px`,
+            width: `${keyFrameHeight100}px`,
           },
         },
       },
