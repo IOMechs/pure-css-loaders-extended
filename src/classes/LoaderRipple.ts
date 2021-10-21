@@ -4,8 +4,8 @@ import KeyframeChange from '../Interfaces/KeyframeChange';
 class LoaderRipple extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
-    
-    const keyFrame0top = newSizeInt/2;
+
+    const keyFrame0top = newSizeInt / 2;
     const keyFrame100height = newSizeInt;
 
     const changes: StyleChange[] = [
@@ -44,7 +44,10 @@ class LoaderRipple extends Loader {
         },
       },
     ];
-    replacedStyles = super.replaceKeyframeStyles(keyframesChanges, replacedStyles);
+    replacedStyles = super.replaceKeyframeStyles(
+      keyframesChanges,
+      replacedStyles
+    );
 
     return {
       ...this,
