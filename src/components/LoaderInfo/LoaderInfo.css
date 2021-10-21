@@ -28,11 +28,21 @@
 
 .badge-text-html{
   font-size: 12px;
-  /* width: fit-content */
-
 }
 
 .badge-text-css{
   font-size: 14px;
 }
 
+.color-picker-group {
+  position: relative;
+}
+
+.color-picker-group__picker-container {
+  position: absolute;
+  background: white;
+  top: 40px;
+  padding: 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  z-index: 10;
+}
