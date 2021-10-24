@@ -14,6 +14,7 @@ import Loader from '../classes/Loader';
 import LoaderCircle from '../classes/LoaderCircle';
 import LoaderEllipsis from '../classes/LoaderEllipsis';
 import LoaderFacebook from '../classes/LoaderFacebook';
+import LoaderGrid from '../classes/LoaderGrid';
 import LoaderHeart from '../classes/LoaderHeart';
 import LoaderHourglass from '../classes/LoaderHourglass';
 
@@ -23,7 +24,7 @@ const Loaders: Loader[] = [
   new Loader(LDualRing),
   new LoaderEllipsis(LEllipsis),
   new LoaderFacebook(LFacebook),
-  new Loader(LGrid),
+  new LoaderGrid(LGrid),
   new LoaderHeart(LHeart),
   new LoaderHourglass(LHourglass),
   new Loader(LRing),
