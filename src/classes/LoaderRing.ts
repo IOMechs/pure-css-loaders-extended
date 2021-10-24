@@ -3,6 +3,7 @@ import StyleChange from '../Interfaces/StyleChange';
 class LoaderRing extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
+    const borderWidth = (10 / 100) * newSizeInt;
     const changes: StyleChange[] = [
       {
         selector: '.lds-ring',
@@ -16,6 +17,7 @@ class LoaderRing extends Loader {
         replacements: {
           width: `${newSizeInt}px`,
           height: `${newSizeInt}px`,
+          border: `${borderWidth}px solid #333`,
           'border-color': `${color} transparent transparent transparent`,
         },
       },
