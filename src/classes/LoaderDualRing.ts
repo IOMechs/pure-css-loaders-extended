@@ -3,6 +3,7 @@ import StyleChange from '../Interfaces/StyleChange';
 class LoaderDualRing extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
+    const borderWidth = (9.375 / 100) * newSizeInt;
 
     const changes: StyleChange[] = [
       {
@@ -17,6 +18,7 @@ class LoaderDualRing extends Loader {
         replacements: {
           width: `${newSizeInt}px`,
           height: `${newSizeInt}px`,
+          border: `${borderWidth}px solid #333`,
           'border-color': `${color} transparent ${color} transparent`,
         },
       },
