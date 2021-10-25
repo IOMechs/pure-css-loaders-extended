@@ -12,6 +12,7 @@ import LRoller from '../assets/lds-roller.json';
 import LSpinner from '../assets/lds-spinner.json';
 import Loader from '../classes/Loader';
 import LoaderCircle from '../classes/LoaderCircle';
+import LoaderDefault from '../classes/LoaderDefault';
 import LoaderEllipsis from '../classes/LoaderEllipsis';
 import LoaderFacebook from '../classes/LoaderFacebook';
 import LoaderHeart from '../classes/LoaderHeart';
@@ -19,7 +20,7 @@ import LoaderHourglass from '../classes/LoaderHourglass';
 
 const Loaders: Loader[] = [
   new LoaderCircle(LCircle),
-  new Loader(LDefault),
+  new LoaderDefault(LDefault),
   new Loader(LDualRing),
   new LoaderEllipsis(LEllipsis),
   new LoaderFacebook(LFacebook),
