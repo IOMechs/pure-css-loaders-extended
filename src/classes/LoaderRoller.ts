@@ -5,8 +5,9 @@ class LoaderRoller extends Loader {
     transform(size: string, color: string) {
         const oldSizeInt = parseInt(this.size, 10);
         const newSizeInt = parseInt(size, 10);
-        const sizeDifference = (newSizeInt / oldSizeInt);
-        const pointSize = Math.floor(newSizeInt/11);
+        const sizeRatio = (newSizeInt / oldSizeInt);
+        const pointSize = newSizeInt * 0.0875;
+        const transformValue = newSizeInt/2;
 
         const changes: StyleChange[] = [
             {
@@ -19,7 +20,7 @@ class LoaderRoller extends Loader {
             {
                 selector: '.lds-roller div',
                 replacements: {
-                    'transform-origin': `${newSizeInt/2}px ${newSizeInt/2}px`,
+                    'transform-origin': `${transformValue}px ${transformValue}px`,
                 },
             },
             {
@@ -28,62 +29,63 @@ class LoaderRoller extends Loader {
                     background: color,
                     width: `${pointSize}px`,
                     height: `${pointSize}px`,
+                    margin: '0px',
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(1):after',
                 replacements: {
-                    top: `${sizeDifference * 63}px`,
-                    left: `${sizeDifference * 63}px`,
+                    top: `${sizeRatio * 61}px`,
+                    left: `${sizeRatio * 63}px`,
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(2):after',
                 replacements: {
-                    top: `${sizeDifference * 68}px`,
-                    left: `${sizeDifference * 56}px`,
+                    top: `${sizeRatio * 67.3}px`,
+                    left: `${sizeRatio * 56}px`,
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(3):after',
                 replacements: {
-                    top: `${sizeDifference * 71}px`,
-                    left: `${sizeDifference * 48}px`,
+                    top: `${sizeRatio * 71}px`,
+                    left: `${sizeRatio * 48.3}px`,
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(4):after',
                 replacements: {
-                    top: `${sizeDifference * 72}px`,
-                    left: `${sizeDifference * 40}px`,
+                    top: `${sizeRatio * 72.5}px`,
+                    left: `${sizeRatio * 40}px`,
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(5):after',
                 replacements: {
-                    top: `${sizeDifference * 71}px`,
-                    left: `${sizeDifference * 32}px`,
+                    top: `${sizeRatio * 72.5}px`,
+                    left: `${sizeRatio * 31.5}px`,
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(6):after',
                 replacements: {
-                    top: `${sizeDifference * 68}px`,
-                    left: `${sizeDifference * 24}px`,
+                    top: `${sizeRatio * 70}px`,
+                    left: `${sizeRatio * 23}px`,
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(7):after',
                 replacements: {
-                    top: `${sizeDifference * 63}px`,
-                    left: `${sizeDifference * 17}px`,
+                    top: `${sizeRatio * 66}px`,
+                    left: `${sizeRatio * 15.5}px`,
                 },
             },
             {
                 selector: '.lds-roller div:nth-child(8):after',
                 replacements: {
-                    top: `${sizeDifference * 56}px`,
-                    left: `${sizeDifference * 12}px`,
+                    top: `${sizeRatio * 60}px`,
+                    left: `${sizeRatio * 8.6}px`,
                 },
             },
         ];
