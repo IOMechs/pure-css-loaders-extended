@@ -3,7 +3,6 @@ import StyleChange from '../Interfaces/StyleChange';
 class LoaderSpinner extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
-    console.log(newSizeInt);
     const changes: StyleChange[] = [
       {
         selector: '.lds-spinner',
