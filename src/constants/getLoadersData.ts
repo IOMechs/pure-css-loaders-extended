@@ -34,4 +34,5 @@ const Loaders: Loader[] = [
   new Loader(LRoller),
   new Loader(LSpinner),
 ];
+
 export default Loaders;

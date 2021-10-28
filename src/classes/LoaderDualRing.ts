@@ -23,6 +23,7 @@ class LoaderDualRing extends Loader {
         },
       },
     ];
+
     let replacedStyles = super.replaceStyles(changes);
 
     return {
