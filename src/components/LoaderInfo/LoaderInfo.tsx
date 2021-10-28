@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Loader from '../../classes/Loader';
 import cloneDeep from 'lodash/cloneDeep';
 import Style from 'style-it';
+import { FaCheck } from 'react-icons/fa';
 import { CirclePicker } from 'react-color';
 
 type Props = {
@@ -21,6 +22,12 @@ const LoaderInfo: React.FC<Props> = ({
 }) => {
   const [loaderInfo, setLoaderInfo] = useState<Loader>();
   const [size, setSize] = useState<number>(parseInt(loader.size, 10));
+  const [isHTMLCopied, setIsHTMLCopied] = useState(false);
+  const [isCSSCopied, setIsCSSCopied] = useState(false);
+  const [badgeOpacity, setBadgeOpacity] = useState({
+    htmlBadgeOpacity: false,
+    cssBadgeOpacity: false,
+  });
   const [color, setColor] = useState<string>(loader.color);
   const [showColorPicker, setShowColorPicker] = useState<boolean>(false);
   let colorInputRef = useRef<any>();
@@ -52,6 +59,43 @@ const LoaderInfo: React.FC<Props> = ({
 
   const updateSize = (sizeStr: string) => {
     setSize(parseInt(sizeStr, 10));
+  };
+
+  useEffect(() => {
+    if (isHTMLCopied) {
+      setTimeout(() => {
+        setIsHTMLCopied(false);
+        setBadgeOpacity((prevState) => ({
+          ...prevState,
+          htmlBadgeOpacity: false,
+        }));
+      }, 2000);
+    }
+    if (isCSSCopied) {
+      setTimeout(() => {
+        setIsCSSCopied(false);
+        setBadgeOpacity((prevState) => ({
+          ...prevState,
+          cssBadgeOpacity: false,
+        }));
+      }, 2000);
+    }
+  }, [isHTMLCopied, isCSSCopied]);
+
+  const onHTMLCopyButtonPress = () => {
+    setIsHTMLCopied(true);
+    setBadgeOpacity((prevState) => ({
+      ...prevState,
+      htmlBadgeOpacity: true,
+    }));
+  };
+
+  const onCSSCopyButtonPress = () => {
+    setIsCSSCopied(true);
+    setBadgeOpacity((prevState) => ({
+      ...prevState,
+      cssBadgeOpacity: true,
+    }));
   };
 
   const toggleColorPickerShow = (show: boolean) => {
@@ -143,12 +187,32 @@ const LoaderInfo: React.FC<Props> = ({
             <Badge
               className="badge"
               contentEditable={false}
-              bg="secondary"
+              bg={isHTMLCopied ? 'success' : 'secondary'}
               onClick={() => {
                 navigator.clipboard.writeText(loaderInfo?.html || '');
+                onHTMLCopyButtonPress();
               }}
             >
-              Copy
+              <span
+                className="badge-text badge-text-html"
+                style={{
+                  ...styles,
+                  opacity: Number(!badgeOpacity.htmlBadgeOpacity),
+                  position: 'absolute',
+                  marginLeft: '-8px',
+                }}
+              >
+                Copy
+              </span>
+              <span
+                className="badge-text badge-text-html"
+                style={{
+                  ...styles,
+                  opacity: Number(badgeOpacity.htmlBadgeOpacity),
+                }}
+              >
+                <FaCheck />
+              </span>
             </Badge>{' '}
           </div>
         </div>
@@ -170,12 +234,32 @@ const LoaderInfo: React.FC<Props> = ({
           <Badge
             className="badge"
             contentEditable={false}
-            bg="secondary"
+            bg={isCSSCopied ? 'success' : 'secondary'}
             onClick={() => {
               navigator.clipboard.writeText(loaderInfo?.cssRules || '');
+              onCSSCopyButtonPress();
             }}
           >
-            Copy
+            <span
+              className="badge-text badge-text-html"
+              style={{
+                ...styles,
+                opacity: Number(!badgeOpacity.cssBadgeOpacity),
+                position: 'absolute',
+                marginLeft: '-5px',
+              }}
+            >
+              Copy
+            </span>
+            <span
+              className="badge-text badge-text-css"
+              style={{
+                ...styles,
+                opacity: Number(badgeOpacity.cssBadgeOpacity),
+              }}
+            >
+              <FaCheck />
+            </span>
           </Badge>{' '}
           {loaderInfo?.cssRules}
         </pre>
@@ -185,3 +269,7 @@ const LoaderInfo: React.FC<Props> = ({
 };
 
 export default LoaderInfo;
+
+const styles = {
+  transition: 'all 300ms ease-in-out',
+};
