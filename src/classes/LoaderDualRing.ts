@@ -18,7 +18,7 @@ class LoaderDualRing extends Loader {
         replacements: {
           width: `${newSizeInt}px`,
           height: `${newSizeInt}px`,
-          border: `${borderWidth}px solid #333`,
+          border: `${borderWidth}px solid ${color}`,
           'border-color': `${color} transparent ${color} transparent`,
         },
       },
