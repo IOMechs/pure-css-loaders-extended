@@ -22,7 +22,11 @@ import LoaderHourglass from '../classes/LoaderHourglass';
 
 const Loaders: Loader[] = [
   new LoaderCircle(LCircle),
+<<<<<<< HEAD
   new LoaderDefault(LDefault),
+=======
+  new Loader(LDefault),
+>>>>>>> f354ea4ee10cbcfa4e32ee810f531eed385b4bba
   new LoaderDualRing(LDualRing),
   new LoaderEllipsis(LEllipsis),
   new LoaderFacebook(LFacebook),
