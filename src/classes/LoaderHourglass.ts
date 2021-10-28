@@ -1,24 +1,23 @@
 import Loader from './Loader';
 import StyleChange from '../Interfaces/StyleChange';
-class LoaderRing extends Loader {
+class LoaderHourglass extends Loader {
+  bumpPosition = -24;
+  tailSize = 32;
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
-    const borderWidth = (10 / 100) * newSizeInt;
     const changes: StyleChange[] = [
       {
-        selector: '.lds-ring',
+        selector: '.lds-hourglass',
         replacements: {
           width: `${newSizeInt}px`,
           height: `${newSizeInt}px`,
         },
       },
       {
-        selector: '.lds-ring div',
+        selector: '.lds-hourglass:after',
         replacements: {
-          width: `${newSizeInt}px`,
-          height: `${newSizeInt}px`,
-          border: `${borderWidth}px solid ${color}`,
-          'border-color': `${color} transparent transparent transparent`,
+          border: `${newSizeInt / 2}px solid ${color}`,
+          'border-color': `${color} transparent ${color} transparent`,
         },
       },
     ];
@@ -29,8 +28,8 @@ class LoaderRing extends Loader {
     };
   }
   clone() {
-    return new LoaderRing({ ...this });
+    return new LoaderHourglass({ ...this });
   }
 }
 
-export default LoaderRing;
+export default LoaderHourglass;
