@@ -19,6 +19,7 @@ import LoaderGrid from '../classes/LoaderGrid';
 import LoaderHeart from '../classes/LoaderHeart';
 import LoaderHourglass from '../classes/LoaderHourglass';
 import LoaderSpinner from '../classes/LoaderSpinner';
+import LoaderRipple from '../classes/LoaderRipple';
 
 const Loaders: Loader[] = [
   new LoaderCircle(LCircle),
@@ -30,7 +31,7 @@ const Loaders: Loader[] = [
   new LoaderHeart(LHeart),
   new LoaderHourglass(LHourglass),
   new Loader(LRing),
-  new Loader(LRipple),
+  new LoaderRipple(LRipple),
   new Loader(LRoller),
   new LoaderSpinner(LSpinner),
 ];
