@@ -4,7 +4,6 @@ class LoaderDualRing extends Loader {
   transform(size: string, color: string) {
     const newSizeInt = parseInt(size, 10);
     const borderWidth = (9.375 / 100) * newSizeInt;
-
     const changes: StyleChange[] = [
       {
         selector: '.lds-dual-ring',
@@ -23,7 +22,6 @@ class LoaderDualRing extends Loader {
         },
       },
     ];
-
     let replacedStyles = super.replaceStyles(changes);
 
     return {
