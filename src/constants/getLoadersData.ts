@@ -11,7 +11,7 @@ import LRipple from '../assets/lds-ripple.json';
 import LRoller from '../assets/lds-roller.json';
 import LSpinner from '../assets/lds-spinner.json';
 import Loader from '../classes/Loader';
-// import LoaderDualRing from '../classes/LoaderDualRing';
+import LoaderDualRing from '../classes/LoaderDualRing';
 import LoaderCircle from '../classes/LoaderCircle';
 import LoaderDefault from '../classes/LoaderDefault';
 import LoaderEllipsis from '../classes/LoaderEllipsis';
@@ -27,7 +27,7 @@ import LoaderRipple from '../classes/LoaderRipple';
 const Loaders: Loader[] = [
   new LoaderCircle(LCircle),
   new LoaderDefault(LDefault),
-  new Loader(LDualRing),
+  new LoaderDualRing(LDualRing),
   new LoaderEllipsis(LEllipsis),
   new LoaderFacebook(LFacebook),
   new LoaderGrid(LGrid),
