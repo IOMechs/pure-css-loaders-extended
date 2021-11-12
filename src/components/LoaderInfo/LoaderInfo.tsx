@@ -6,7 +6,10 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Loader from '../../classes/Loader';
 import cloneDeep from 'lodash/cloneDeep';
 import Style from 'style-it';
-import { FaCheck } from 'react-icons/fa';
+import {
+  FaClipboardList,
+  FaClipboardCheck,
+} from 'react-icons/fa';
 import { CirclePicker } from 'react-color';
 
 type Props = {
@@ -185,7 +188,7 @@ const LoaderInfo: React.FC<Props> = ({
           <div className="modal-html-text">
             {loaderInfo?.html}
             <Badge
-              className="badge"
+              className="badge badge-icon"
               contentEditable={false}
               bg={isHTMLCopied ? 'success' : 'secondary'}
               onClick={() => {
@@ -194,24 +197,21 @@ const LoaderInfo: React.FC<Props> = ({
               }}
             >
               <span
-                className="badge-text badge-text-html"
                 style={{
                   ...styles,
                   opacity: Number(!badgeOpacity.htmlBadgeOpacity),
                   position: 'absolute',
-                  marginLeft: '-8px',
                 }}
               >
-                Copy
+                <FaClipboardList />
               </span>
               <span
-                className="badge-text badge-text-html"
                 style={{
                   ...styles,
                   opacity: Number(badgeOpacity.htmlBadgeOpacity),
                 }}
               >
-                <FaCheck />
+                <FaClipboardCheck />
               </span>
             </Badge>{' '}
           </div>
@@ -232,7 +232,7 @@ const LoaderInfo: React.FC<Props> = ({
           className="css-container"
         >
           <Badge
-            className="badge"
+            className="badge badge-icon"
             contentEditable={false}
             bg={isCSSCopied ? 'success' : 'secondary'}
             onClick={() => {
@@ -241,24 +241,21 @@ const LoaderInfo: React.FC<Props> = ({
             }}
           >
             <span
-              className="badge-text badge-text-html"
               style={{
                 ...styles,
                 opacity: Number(!badgeOpacity.cssBadgeOpacity),
                 position: 'absolute',
-                marginLeft: '-5px',
               }}
             >
-              Copy
+              <FaClipboardList />
             </span>
             <span
-              className="badge-text badge-text-css"
               style={{
                 ...styles,
                 opacity: Number(badgeOpacity.cssBadgeOpacity),
               }}
             >
-              <FaCheck />
+              <FaClipboardCheck />
             </span>
           </Badge>{' '}
           {loaderInfo?.cssRules}
