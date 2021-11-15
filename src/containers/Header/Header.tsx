@@ -18,9 +18,9 @@ const Header = () => {
         <div className="repo_link_container header_text">
           <span> Like Pure CSS Loaders? Give our repo a &nbsp; </span>
           <GitHubButton
-            href="https://github.com/iomechs/pure-css-loaders"
+            href="https://github.com/iomechs/pure-css-loaders-extended"
             data-icon="octicon-star"
-            aria-label="Star iomechs/pure-css-loaders on GitHub"
+            aria-label="Star iomechs/pure-css-loaders-extended on GitHub"
           >
             Star
           </GitHubButton>
