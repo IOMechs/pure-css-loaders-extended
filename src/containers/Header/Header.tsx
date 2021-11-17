@@ -14,9 +14,11 @@ const Header = () => {
         >
           <img className="logo" src={logo} alt="IOMechs Logo" />
         </a>
-        <div className="title header_text">Pure CSS Loaders (configurable)</div>
+        <div className="title header_text">
+          Pure CSS Loaders Extended (configurable)
+        </div>
         <div className="repo_link_container header_text">
-          <span> Like Pure CSS Loaders? Give our repo a &nbsp; </span>
+          <span> Like Pure CSS Loaders Extended? Give our repo a &nbsp; </span>
           <GitHubButton
             href="https://github.com/iomechs/pure-css-loaders-extended"
             data-icon="octicon-star"
