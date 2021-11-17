@@ -6,10 +6,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import Loader from '../../classes/Loader';
 import cloneDeep from 'lodash/cloneDeep';
 import Style from 'style-it';
-import {
-  FaClipboardList,
-  FaClipboardCheck,
-} from 'react-icons/fa';
+import { FaCopy, FaClipboardCheck } from 'react-icons/fa';
 import { CirclePicker } from 'react-color';
 
 type Props = {
@@ -203,7 +200,7 @@ const LoaderInfo: React.FC<Props> = ({
                   position: 'absolute',
                 }}
               >
-                <FaClipboardList />
+                <FaCopy />
               </span>
               <span
                 style={{
@@ -247,7 +244,7 @@ const LoaderInfo: React.FC<Props> = ({
                 position: 'absolute',
               }}
             >
-              <FaClipboardList />
+              <FaCopy />
             </span>
             <span
               style={{
