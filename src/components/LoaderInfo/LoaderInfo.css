@@ -14,24 +14,10 @@
   flex-wrap: wrap;
 }
 
-.badge {
-  display: flex;
-  flex-direction: row;
-  height: fit-content;
-  width: 60px
-}
-
-.badge-text{  
-  margin: auto;
-  position: relative;
-}
-
-.badge-text-html{
-  font-size: 12px;
-}
-
-.badge-text-css{
-  font-size: 14px;
+.badge.badge-icon {
+  padding: 6px 6px 8px;
+  font-size: 1rem;
+  right: 4%;
 }
 
 .color-picker-group {
