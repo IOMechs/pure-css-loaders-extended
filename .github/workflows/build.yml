@@ -16,4 +16,4 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build
-        run: export APP_BASE_NAME="/pure-css-loaders/" && npm run build
+        run: export APP_BASE_NAME="/pure-css-loaders-extended/" && npm run build
