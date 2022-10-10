@@ -32,3 +32,30 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   z-index: 10;
 }
+
+.modal-section-container {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid;
+  border-color: #d3d3d3;
+  flex-direction: column;
+  flex: 1;
+}
+
+.modal-heading-text-container {
+  display: 'flex';
+  flex-direction: 'row';
+  align-items: 'center';
+  justify-content: 'center';
+}
+
+.modal-html-text-header {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin-left: 5px;
+}
+
+.modal-content-container {
+  padding-bottom: 1rem;
+}
