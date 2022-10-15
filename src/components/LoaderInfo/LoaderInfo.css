@@ -44,14 +44,14 @@
   gap: 10px;
 }
 
-.modal-section-container pre {
+.modal-section-container {
   position: relative;
 }
 
-.modal-content-container pre .badge {
+.modal-content-container .badge {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
   z-index: 2;
 }
 
