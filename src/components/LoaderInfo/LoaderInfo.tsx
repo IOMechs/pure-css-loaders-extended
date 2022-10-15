@@ -197,36 +197,34 @@ const LoaderInfo: React.FC<Props> = ({
               <h6 className="modal-html-text-header">HTML</h6>
             </div>
             <pre contentEditable={true} suppressContentEditableWarning={true}>
-              <div className="modal-html-text">
-                {loaderInfo?.html}
-                <Badge
-                  className="badge badge-icon"
-                  contentEditable={false}
-                  bg={isHTMLCopied ? 'success' : 'secondary'}
-                  onClick={() => {
-                    navigator.clipboard.writeText(loaderInfo?.html || '');
-                    onHTMLCopyButtonPress();
+              <div className="modal-html-text">{loaderInfo?.html}</div>
+              <Badge
+                className="badge badge-icon"
+                contentEditable={false}
+                bg={isHTMLCopied ? 'success' : 'secondary'}
+                onClick={() => {
+                  navigator.clipboard.writeText(loaderInfo?.html || '');
+                  onHTMLCopyButtonPress();
+                }}
+              >
+                <span
+                  style={{
+                    ...styles,
+                    opacity: Number(!badgeOpacity.htmlBadgeOpacity),
+                    position: 'absolute',
                   }}
                 >
-                  <span
-                    style={{
-                      ...styles,
-                      opacity: Number(!badgeOpacity.htmlBadgeOpacity),
-                      position: 'absolute',
-                    }}
-                  >
-                    <FaCopy />
-                  </span>
-                  <span
-                    style={{
-                      ...styles,
-                      opacity: Number(badgeOpacity.htmlBadgeOpacity),
-                    }}
-                  >
-                    <FaClipboardCheck />
-                  </span>
-                </Badge>{' '}
-              </div>
+                  <FaCopy />
+                </span>
+                <span
+                  style={{
+                    ...styles,
+                    opacity: Number(badgeOpacity.htmlBadgeOpacity),
+                  }}
+                >
+                  <FaClipboardCheck />
+                </span>
+              </Badge>{' '}
             </pre>
           </div>
           <div
@@ -275,7 +273,7 @@ const LoaderInfo: React.FC<Props> = ({
                   <FaClipboardCheck />
                 </span>
               </Badge>{' '}
-              {loaderInfo?.cssRules}
+              <div className="modal-css-text">{loaderInfo?.cssRules}</div>
             </pre>
           </div>
         </Modal.Body>
