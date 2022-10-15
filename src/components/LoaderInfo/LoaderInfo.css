@@ -8,10 +8,10 @@
   min-height: 100px;
 }
 
-.modal-html-text {
-  display: flex;
-  width: 86%;
-  flex-wrap: wrap;
+.modal-html-text,
+.modal-css-text {
+  width: calc(100% - 36px);
+  white-space: break-spaces;
 }
 
 .badge.badge-icon {
@@ -40,6 +40,19 @@
   border-color: #d3d3d3;
   flex-direction: column;
   flex: 1;
+  display: flex;
+  gap: 10px;
+}
+
+.modal-section-container pre {
+  position: relative;
+}
+
+.modal-content-container pre .badge {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
 }
 
 .modal-heading-text-container {
