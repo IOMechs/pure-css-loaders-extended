@@ -3,6 +3,7 @@ import './App.css';
 import LandingPage from './containers/LandingPage';
 import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './containers/Header';
+import InfoSidebar from './components/InfoSidebar';
 
 const baseName = process.env.APP_BASE_NAME || '';
 
@@ -19,6 +20,7 @@ function App() {
           </Route>
         </Switch>
       </div>
+      <InfoSidebar />
     </Router>
   );
 }
